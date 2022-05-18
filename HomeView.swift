@@ -13,14 +13,37 @@ struct HomeView: View {
     @State private var showUpdate = false
     @State private var showZic = false
     
+    
     var body: some View{
         VStack(alignment: .leading, spacing: 16){
             VStack(alignment: .leading, spacing: 16){
+                Text("Username: \(sessionService.userDetails?.Username ?? "N/A")")
                 Text("First Name: \(sessionService.userDetails?.firstName ?? "N/A")")
                 Text("Last Name: \(sessionService.userDetails?.lastName ?? "N/A")")
-                Text("City: \(sessionService.userDetails?.city ?? "N/A")")
             }
-            ButtonView(title: "Update Your Infomation"){
+            
+//            ButtonView(title: "Zicker Clicker"){
+//                showZic.toggle()
+//            }
+//            .sheet(isPresented: $showZic,
+//                    content: {
+//                        Zicker();
+//                    })
+            HStack{
+                
+            
+            Button{
+                showZic.toggle()
+            }label: {
+                Text("Zicker Clicker")
+                    
+            }
+                NavigationLink(destination: Zicker(), isActive: $showZic) {
+                    EmptyView()
+                }
+            }
+       
+            ButtonView(title: "Update your Info"){
                 showUpdate.toggle()
             }
             .sheet(isPresented: $showUpdate,
@@ -28,17 +51,11 @@ struct HomeView: View {
                         UpdateView();
                     })
             
-            
+    
             ButtonView(title: "Log Out"){
                 sessionService.logout()
             }
-            ButtonView(title: "Zicker Clicker"){
-                showZic.toggle()
-            }
-            .sheet(isPresented: $showZic,
-                    content: {
-                        Zicker();
-                    })
+            
         }
         .padding(.horizontal, 16).navigationTitle("Zicker Clicker")
     }

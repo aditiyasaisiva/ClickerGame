@@ -35,8 +35,8 @@ struct RegisterView: View {
                                        keyboardType: .namePhonePad,
                                        sfSymbol: nil)
                     
-                    InputTextFieldView(text: $vm.userDetails.city,
-                                       placeholder: "City",
+                    InputTextFieldView(text: $vm.userDetails.Username,
+                                       placeholder: "Username",
                                        keyboardType: .namePhonePad,
                                        sfSymbol: nil)
                 }

@@ -64,12 +64,13 @@ private extension SessionServiceImpl{
                  let value = snapshot.value as? NSDictionary,
                  let firstName = value[RegistrationKeys.firstName.rawValue] as? String,
                  let lastName = value[RegistrationKeys.lastName.rawValue] as? String,
-                 let city = value[RegistrationKeys.city.rawValue] as? String
+                       let Username = value[RegistrationKeys.Username.rawValue] as? String
+               
                  else {
                     return
                  }
                  DispatchQueue.main.async{
-                   self.userDetails = SessionUserDetails(firstName: firstName, lastName: lastName, city: city)
+                     self.userDetails = SessionUserDetails(firstName: firstName, lastName: lastName, Username: Username)
                  }
              }
     }

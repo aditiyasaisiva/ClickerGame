@@ -23,7 +23,7 @@ struct UpdateView: View {
     @State private var password = ""
     @State private var firstName = ""
     @State private var lastName = ""
-    @State private var city = ""
+    @State private var Username = ""
 
     func updateValues(){
         
@@ -38,12 +38,12 @@ struct UpdateView: View {
                 
                 InputTextFieldView(text: $firstName, placeholder: "Update first Name", keyboardType: .default, sfSymbol: "person")
                 InputTextFieldView(text: $lastName, placeholder: "Update last Name", keyboardType: .default, sfSymbol: "person.fill")
-                InputTextFieldView(text: $city, placeholder: "Update city", keyboardType: .default, sfSymbol: "building")
+                InputTextFieldView(text: $Username, placeholder: "Update Username", keyboardType: .default, sfSymbol: "building")
             
                 
                 ButtonView(title: "Update Your Information"){
                     let uid = Auth.auth().currentUser?.uid ?? "test"
-                    Database.database().reference().child("users").child(uid).updateChildValues(["firstName": firstName, "lastName": lastName, "city": city])
+                    Database.database().reference().child("users").child(uid).updateChildValues(["firstName": firstName, "lastName": lastName, "Username": Username])
                     presentationMode.wrappedValue.dismiss()
                 }
                 

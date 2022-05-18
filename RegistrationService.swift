@@ -13,7 +13,9 @@ import FirebaseDatabase
 enum RegistrationKeys: String {
     case firstName
     case lastName
-    case city
+    case Username
+    case Count
+    case CPS
 }
 //registration services protocol
 protocol RegistrationService {
@@ -35,7 +37,10 @@ final class RegistrationServiceImpl: RegistrationService {
                             //set our key values for the database
                             let values = [RegistrationKeys.firstName.rawValue: details.firstName,
                                           RegistrationKeys.lastName.rawValue: details.lastName,
-                                          RegistrationKeys.city.rawValue: details.city] as [String: Any]
+                                          RegistrationKeys.Username.rawValue: details.Username,
+                                          RegistrationKeys.Count.rawValue: details.Count
+                            ] as [String: Any]
+                                
                             Database.database()//pulls up the database
                                 .reference()
                                 .child("users")//find users in database

@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ButtonView: View {
-    
+    @Environment(\.presentationMode) var presentationMode
+    @State private var showScore = false
     
     
     typealias ActionHandler = () -> Void
